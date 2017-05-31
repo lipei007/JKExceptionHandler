@@ -15,6 +15,9 @@
 		428BC0CE1D7FBB2300AE0FE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428BC0CC1D7FBB2300AE0FE0 /* LaunchScreen.storyboard */; };
 		428BC0D91D7FBB2300AE0FE0 /* JKExceptionHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 428BC0D81D7FBB2300AE0FE0 /* JKExceptionHandlerTests.m */; };
 		428BC0E41D7FBB2400AE0FE0 /* JKExceptionHandlerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 428BC0E31D7FBB2400AE0FE0 /* JKExceptionHandlerUITests.m */; };
+		428BC0F31D7FBB3600AE0FE0 /* JKExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 428BC0F21D7FBB3600AE0FE0 /* JKExceptionHandler.m */; };
+		428BC0F61D7FC75F00AE0FE0 /* JKSQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 428BC0F51D7FC75F00AE0FE0 /* JKSQLiteManager.m */; };
+		428BC0F81D7FDE8C00AE0FE0 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 428BC0F71D7FDE8C00AE0FE0 /* libsqlite3.0.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,11 @@
 		428BC0DF1D7FBB2400AE0FE0 /* JKExceptionHandlerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JKExceptionHandlerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		428BC0E31D7FBB2400AE0FE0 /* JKExceptionHandlerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKExceptionHandlerUITests.m; sourceTree = "<group>"; };
 		428BC0E51D7FBB2400AE0FE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		428BC0F11D7FBB3600AE0FE0 /* JKExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKExceptionHandler.h; sourceTree = "<group>"; };
+		428BC0F21D7FBB3600AE0FE0 /* JKExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKExceptionHandler.m; sourceTree = "<group>"; };
+		428BC0F41D7FC75F00AE0FE0 /* JKSQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKSQLiteManager.h; sourceTree = "<group>"; };
+		428BC0F51D7FC75F00AE0FE0 /* JKSQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKSQLiteManager.m; sourceTree = "<group>"; };
+		428BC0F71D7FDE8C00AE0FE0 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				428BC0F81D7FDE8C00AE0FE0 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +90,7 @@
 		428BC0B21D7FBB2300AE0FE0 = {
 			isa = PBXGroup;
 			children = (
+				428BC0F71D7FDE8C00AE0FE0 /* libsqlite3.0.tbd */,
 				428BC0BD1D7FBB2300AE0FE0 /* JKExceptionHandler */,
 				428BC0D71D7FBB2300AE0FE0 /* JKExceptionHandlerTests */,
 				428BC0E21D7FBB2400AE0FE0 /* JKExceptionHandlerUITests */,
@@ -110,6 +120,8 @@
 				428BC0CC1D7FBB2300AE0FE0 /* LaunchScreen.storyboard */,
 				428BC0CF1D7FBB2300AE0FE0 /* Info.plist */,
 				428BC0BE1D7FBB2300AE0FE0 /* Supporting Files */,
+				428BC0F11D7FBB3600AE0FE0 /* JKExceptionHandler.h */,
+				428BC0F21D7FBB3600AE0FE0 /* JKExceptionHandler.m */,
 			);
 			path = JKExceptionHandler;
 			sourceTree = "<group>";
@@ -117,6 +129,8 @@
 		428BC0BE1D7FBB2300AE0FE0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				428BC0F41D7FC75F00AE0FE0 /* JKSQLiteManager.h */,
+				428BC0F51D7FC75F00AE0FE0 /* JKSQLiteManager.m */,
 				428BC0BF1D7FBB2300AE0FE0 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -271,7 +285,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				428BC0C61D7FBB2300AE0FE0 /* ViewController.m in Sources */,
+				428BC0F31D7FBB3600AE0FE0 /* JKExceptionHandler.m in Sources */,
 				428BC0C31D7FBB2300AE0FE0 /* AppDelegate.m in Sources */,
+				428BC0F61D7FC75F00AE0FE0 /* JKSQLiteManager.m in Sources */,
 				428BC0C01D7FBB2300AE0FE0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

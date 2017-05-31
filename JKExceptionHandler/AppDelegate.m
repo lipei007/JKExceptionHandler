@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "JKExceptionHandler.h"
+#import "ViewController.h"
+#import "JKSQLiteManager.h"
 
 @interface AppDelegate ()
 
@@ -14,9 +17,44 @@
 
 @implementation AppDelegate
 
+void UncaughtExceptionHandler(NSException *exception) {
+    /**
+     *  获取异常崩溃信息
+     */
+    NSArray *callStack = [exception callStackSymbols];
+    NSString *reason = [exception reason];
+    NSString *name = [exception name];
+    NSString *content = [NSString stringWithFormat:@"异常错误报告\n exception_name:  %@\n exception_reason:  \n%@ \n exception_callStackSymbols:  \n%@",name,reason,[callStack componentsJoinedByString:@"\n"]];
+    
+    JKSQLiteManager *manager = [JKSQLiteManager sharedSQLManager];
+    [manager insertInto:@"err" columns:@"(err_text)" values:[NSString stringWithFormat:@"('%@')",content]];
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+//    InstallUncaughtExceptionHandler();
+    NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
+    
+    self.version = @"v1.0.0";
+    
+    JKSQLiteManager *manager = [JKSQLiteManager sharedSQLManager];
+    [manager databaseAtPath:@"/Users/macmini1/Desktop/crash.sqlite"];
+    [manager createTable:"create table if not exists err (_id integer not null primary key AUTOINCREMENT,err_text text not null,err_time TIMESTAMP default (datetime('now', 'localtime')));"];
+    
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
+    ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+    
+//    ViewController *vc = [[ViewController alloc] init];
+    
+    self.window.rootViewController = vc;
+    
+    
     return YES;
 }
 
